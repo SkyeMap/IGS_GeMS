@@ -224,7 +224,7 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
     
     
     def cartoRepsExistAndLayer(fc):
-        crPath = os.path.join(os.path.dirname(outputDir),'../Resources/CartoRepsAZGS')
+        crPath = os.path.dirname(os.path.realpath(__file__))+'/../Resources/CartoRepsAZGS'      
         hasReps = False
         repLyr = ''
         for repFc in 'ContactsAndFaults','GeologicLines','OrientationPoints':
@@ -390,6 +390,7 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
         
         #Confidence domains, Glossary entries, and DataSources entry
         if addConfs:
+            addMsgAndPrint('addConfs found')
             addMsgAndPrint('  Adding standard ExistenceConfidence and IdentityConfidence domains')
             #  create domain, add domain values, and link domain to appropriate fields
             addMsgAndPrint('    Creating domain, linking domain to appropriate fields')
@@ -460,7 +461,6 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
                         except:
                             addMsgAndPrint(arcpy.GetMessages(2))
 
-
         if trackEdits:
             addTracking(os.path.join(thisDB,fc))
             addMsgAndPrint('  Tables ')
@@ -509,8 +509,40 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
     if debug:
         addMsgAndPrint('Optional elements = '+str(OptionalElements))
 
+    try:
+        if trackEdits == 'true':
+            trackEdits = True
+        else:
+            trackEdits = False
+    except:
+        trackEdits = False
+        
     if arcpy.GetInstallInfo()['Version'] < '10.1':
         trackEdits = False
+        
+    try:
+        if cartoReps == 'true':
+            cartoReps = True
+        else:
+            cartoReps = False
+    except:
+        cartoReps = False
+
+    try:
+        if addLTYPE == 'true':
+            addLTYPE = True
+        else:
+            addLTYPE = False
+    except:
+        addLTYPE = False
+        
+    try:
+        if addConfs == 'true':
+            addConfs = True
+        else:
+            addConfs = False
+    except:
+        addConfs = False
         
         
     # create personal gdb in output directory and run main routine
