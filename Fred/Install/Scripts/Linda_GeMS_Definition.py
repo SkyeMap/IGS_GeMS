@@ -5,6 +5,7 @@
 #  
 #  Ralph Haugerud, 19 August 2016 
 # 
+# Modified by Skye Swoboda-Colberg on 3/30/2021
 
 versionString = 'GeMS_Definition.py, version of 1 December 2020'
 # fixes errors in Station feature class definition
@@ -453,6 +454,7 @@ entityDict = {
 
 
 #***************************************************
+# Initialize tableDict
 tableDict = {}
 
 # set feature_ID definitions
