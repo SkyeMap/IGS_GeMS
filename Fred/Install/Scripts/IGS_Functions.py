@@ -390,6 +390,7 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
         
         #Confidence domains, Glossary entries, and DataSources entry
         if addConfs:
+            addMsgAndPrint('addConfs found')
             addMsgAndPrint('  Adding standard ExistenceConfidence and IdentityConfidence domains')
             #  create domain, add domain values, and link domain to appropriate fields
             addMsgAndPrint('    Creating domain, linking domain to appropriate fields')
@@ -426,6 +427,7 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
     # if cartoReps, add cartographic representations to all feature classes
         # trackEdits, add editor tracking to all feature classes and tables
         if cartoReps:
+            addMsgAndPrint('cartoReps found')
             arcpy.env.workspace = thisDB
             tables = arcpy.ListTables()
             datasets = arcpy.ListDatasets()
@@ -462,6 +464,7 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
 
 
         if trackEdits:
+            addMsgAndPrint('trackEdits found')
             addTracking(os.path.join(thisDB,fc))
             addMsgAndPrint('  Tables ')
             arcpy.env.workspace = thisDB
