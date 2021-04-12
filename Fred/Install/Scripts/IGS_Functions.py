@@ -11,9 +11,9 @@ import math
 import os
 import sys
 
-import GeMS_utilityFunctions
-import Linda_GeMS_Definition
-from Linda_GeMS_Definition import tableDict, GeoMaterialConfidenceValues, DefaultExIDConfidenceValues, IDLength
+from GeMS_utilityFunctions import *
+from Linda_GeMS_Definition import *
+# from Linda_GeMS_Definition import tableDict, GeoMaterialConfidenceValues, DefaultExIDConfidenceValues, IDLength
 
 reload(GeMS_utilityFunctions)
 reload(Linda_GeMS_Definition)
@@ -1530,7 +1530,7 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
         fclass = 'CS' + outFdsTag + fc
         if not arcpy.Exists(outFds+'/'+fclass):
             addMsgAndPrint('  Making empty feature class '+fclass)
-            fieldDefs = GeMS_Definition.tableDict[fc]
+            fieldDefs = tableDict[fc]
             fieldDefs[0][0] = fclass+'_ID'
             if fc == 'MapUnitPolys':
                 shp = 'POLYGON'
