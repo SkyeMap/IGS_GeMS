@@ -345,49 +345,63 @@ class XC_tool(object):
         parameterType="Optional",
         direction="Input")
         param7.value = 1
-        
+		
         param8 = arcpy.Parameter(
+        displayName="Y Min",
+        name="yMin",
+        datatype="GPDouble",
+        parameterType="Optional",
+        direction="Input")
+        
+        param9 = arcpy.Parameter(
+        displayName="Y Max",
+        name="yMax",
+        datatype="GPDouble",
+        parameterType="Optional",
+        direction="Input")
+        
+        param10 = arcpy.Parameter(
         displayName="Selection distance",
         name="bufferDistance",
         datatype="GPDouble",
         parameterType="Required",
         direction="Input")
-        param8.value = 9999
+        param10.value = 9999
         
-        param9 = arcpy.Parameter(
+        param11 = arcpy.Parameter(
         displayName="Add LTYPE and PTTYPE",
         name="addLTYPE",
         datatype="GPBoolean",
         parameterType="Optional",
         direction="Input")
-        param9.value = False
+        param11.value = False
                 
-        param10 = arcpy.Parameter(
+        param12 = arcpy.Parameter(
         displayName="Force exit",
         name="forceExit",
         datatype="GPBoolean",
         parameterType="Optional",
         direction="Input")
-        param10.value = False
+        param12.value = False
 
-        param11 = arcpy.Parameter(
+        param13 = arcpy.Parameter(
         displayName="Scratch Geodatabase",
         name="scratchws",
         datatype="DEWorkspace",
         parameterType="Required",
         direction="Input")
 
-        param12 = arcpy.Parameter(
+        param14 = arcpy.Parameter(
         displayName="Save intermediate data",
         name="saveIntermediate",
         datatype="GPBoolean",
         parameterType="Optional",
         direction="Input")
-        param12.value = False
+        param14.value = False
         
         params = [param0, param1, param2, param3, param4,
                   param5, param6, param7, param8, param9,
-                  param10, param11, param12]
+                  param10, param11, param12, param13, param14]
         
         return params
 
@@ -416,12 +430,14 @@ class XC_tool(object):
         startQuadrant   = parameters[5].valueAsText
         outFdsTag       = parameters[6].valueAsText
         vertEx          = float(parameters[7].valueAsText)
-        bufferDistance  = float(parameters[8].valueAsText)
-        addLTYPE        = parameters[9].valueAsText
-        forceExit       = parameters[10].valueAsText
-        scratchws       = parameters[11].valueAsText
-        saveIntermediate = parameters[12].valueAsText
+        yMin            = float(parameters[8].valueAsText)
+        yMax            = float(parameters[9].valueAsText)
+        bufferDistance  = float(parameters[10].valueAsText)
+        addLTYPE        = parameters[11].valueAsText
+        forceExit       = parameters[12].valueAsText
+        scratchws       = parameters[13].valueAsText
+        saveIntermediate = parameters[14].valueAsText
         
         IGS_Functions.xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
-        vertEx,bufferDistance,addLTYPE,forceExit,scratchws,saveIntermediate)
+        vertEx,yMin,yMax,bufferDistance,addLTYPE,forceExit,scratchws,saveIntermediate)
         return

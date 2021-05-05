@@ -750,7 +750,7 @@ def mapOutline(SELongStr, SELatStr, dLong, dLat, ticInterval, isNAD27, outgdb, o
 
 
 def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
- vertEx,bufferDistance,addLTYPE,forceExit,scratchws,saveIntermediate):
+ vertEx,yMin,yMax,bufferDistance,addLTYPE,forceExit,scratchws,saveIntermediate):
 
     '''
     Projects all data in GeologicMap feature dataset (inFds) to cross-section plane
@@ -1326,9 +1326,18 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     #print "Profile Width: ", profileWidth
     addMsgAndPrint('Profile Width: ' +str(profileWidth))
     
+    #Determine minElev
+    if yMin:
+        y0 = yMin
+    else:
+        y0 = 0
+    
     #Calculate maxElev
     elevMax = row[0].extent.ZMax
-    Ymax = roundup(elevMax)  
+    if yMax:
+        Ymax = yMax
+    else:
+        Ymax = roundup(elevMax)  
     #print "Maximum Elevation: ", maxElev
     addMsgAndPrint('Maximum Elevation: ' + str(Ymax))
     
@@ -1367,7 +1376,7 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     #make the bottom left Axis
     x0 = 0
     xE = 0
-    y0 = 0
+    #y0 = 0
     yE = startZ * vertEx
     point.X = x0
     point.Y = y0
@@ -1384,7 +1393,7 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     #make the bottom right Axis
     x0 = profileWidth
     xE = profileWidth
-    y0 = 0
+    #y0 = 0
     yE = endZ * vertEx
     point.X = x0
     point.Y = y0
@@ -1401,8 +1410,8 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     #make the bottom line
     x0 = 0
     xE = profileWidth
-    y0 = 0
-    yE = 0
+    #y0 = 0
+    yE = y0
     point.X = x0
     point.Y = y0
     array.add(point)
@@ -1471,7 +1480,7 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     newRow = ["31.08", "right axis", "right", "map boundary", polyline]
     cursor.insertRow(newRow)
       
-    for i in range(0,roundup(Ymax*vertEx)+100,100):
+    for i in range(int(y0),roundup(Ymax*vertEx)+100,100):
           xLen = ticLength(i)
           x0 = 0 - xLen
           xE = 0
@@ -1502,7 +1511,7 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
           point.Y = y0
           array.add(point)
           point.X = xE
-          point.Y = yE
+          point.Y = y0
           array.add(point)
           polyline = arcpy.Polyline(array)
           array.removeAll()
