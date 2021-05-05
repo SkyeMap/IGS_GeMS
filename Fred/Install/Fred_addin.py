@@ -1,10 +1,10 @@
 import arcpy
 import pythonaddins
-#import os
+import os
 
-#relPath = os.path.dirname(__file__)
-#toolbox = relPath + r"\Fred.pyt"
-toolbox = r"W:\DATABASE_MAPS\24K\SkyeTraining\GitHub\IGS_GeMS\Fred\Install\Fred.pyt"
+relPath = os.path.dirname(__file__)
+toolbox = relPath + r"\Fred.pyt"
+#toolbox = r"W:\DATABASE_MAPS\24K\SkyeTraining\GitHub\IGS_GeMS\Fred\Install\Fred.pyt"
 
 
 class ApplySubscript(object):
