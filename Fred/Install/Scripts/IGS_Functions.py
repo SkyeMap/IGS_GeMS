@@ -13,10 +13,10 @@ import sys
 
 from GeMS_utilityFunctions import *
 from Linda_GeMS_Definition import *
-# from Linda_GeMS_Definition import tableDict, GeoMaterialConfidenceValues, DefaultExIDConfidenceValues, IDLength
+#from Linda_GeMS_Definition import tableDict, GeoMaterialConfidenceValues, DefaultExIDConfidenceValues, IDLength
 
-reload(GeMS_utilityFunctions)
-reload(Linda_GeMS_Definition)
+#reload(GeMS_utilityFunctions)
+#reload(Linda_GeMS_Definition)
 
 
 """The source code of the tool."""
