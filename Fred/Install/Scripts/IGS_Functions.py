@@ -1479,8 +1479,19 @@ def xcTool(gdb,projectAll,fcToProject,dem,xsLine,startQuadrant,outFdsTag,
     featureList.append(polyline)
     newRow = ["31.08", "right axis", "right", "map boundary", polyline]
     cursor.insertRow(newRow)
+
+    #Reset yMin and yMax if specified as optional parameters
+    if yMin:
+        y0 = yMin
+    else:
+        y0 = 0
+        
+    if yMax:
+        maxTic = yMax*vertEx
+    else:
+        maxTic = roundup(Ymax*vertEx)+100 
       
-    for i in range(int(y0),roundup(Ymax*vertEx)+100,100):
+    for i in range(int(y0),int(maxTic),100):
           xLen = ticLength(i)
           x0 = 0 - xLen
           xE = 0

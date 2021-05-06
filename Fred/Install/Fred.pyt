@@ -429,9 +429,9 @@ class XC_tool(object):
         xsLine          = parameters[4].valueAsText
         startQuadrant   = parameters[5].valueAsText
         outFdsTag       = parameters[6].valueAsText
-        vertEx          = float(parameters[7].valueAsText)
-        yMin            = float(parameters[8].valueAsText)
-        yMax            = float(parameters[9].valueAsText)
+        vertEx          = parameters[7].value
+        yMin            = parameters[8].value
+        yMax            = parameters[9].value
         bufferDistance  = float(parameters[10].valueAsText)
         addLTYPE        = parameters[11].valueAsText
         forceExit       = parameters[12].valueAsText
