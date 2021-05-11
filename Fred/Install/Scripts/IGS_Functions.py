@@ -348,7 +348,8 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
                 if 'OrientationPoints' in OptionalElements:
                     opDefs = rename_field(tableDict['OrientationPoints'], 'OrientationPoints_ID', xsN+'OrientationPoints_ID')
                     createFeatureClass(thisDB, xsName, xsN+'OrientationPoints', 'POINT', opDefs)
-        
+ 
+                # TODO: Add cartolines, cartopoints, geolines, geopoints 
         
         # create tables
         tables = ['DescriptionOfMapUnits','DataSources','Glossary']
