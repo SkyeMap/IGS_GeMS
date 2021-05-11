@@ -276,10 +276,10 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
                 fieldDefs.append(['LTYPE','String','NullsOK',50])
             createFeatureClass(thisDB,'GeologicMap',featureClass,'POLYLINE',fieldDefs)
     
-        # ADDED GeochemPoints and GeologicalPoints
+        # ADDED CartographicPoints, GeochemPoints, and GeologicalPoints
         # point feature classes
         featureClasses = []
-        for fc in ['OrientationPoints','GeochronPoints','FossilPoints','Stations',
+        for fc in ['CartographicPoints','OrientationPoints','GeochronPoints','FossilPoints','Stations',
                   'GenericSamples','GenericPoints','GeochemPoints',
                   'GeologicPoints', 'MapUnitPoints']:
             if fc in OptionalElements:
@@ -349,11 +349,15 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
                     opDefs = rename_field(tableDict['OrientationPoints'], 'OrientationPoints_ID', xsN+'OrientationPoints_ID')
                     createFeatureClass(thisDB, xsName, xsN+'OrientationPoints', 'POINT', opDefs)
  
-                # TODO: Add cartolines, cartopoints, geolines, geopoints 
+                #SSC: Add cartolines, cartopoints, geolines, geopoints 
                 
                 if 'CartographicLines' in OptionalElements:
                     opDefs = rename_field(tableDict['CartographicLines'], 'CartographicLines_ID', xsN+'CartographicLines_ID')
                     createFeatureClass(thisDB, xsName, xsN+'CartographicLines', 'POLYLINE', opDefs)
+                    
+                if 'CartographicPoints' in OptionalElements:
+                    opDefs = rename_field(tableDict['CartographicPoints'], 'CartographicPoints_ID', xsN+'CartographicPoints_ID')
+                    createFeatureClass(thisDB, xsName, xsN+'CartographicPoints', 'POINT', opDefs)
                     
                 if 'GeologicLines' in OptionalElements:
                     opDefs = rename_field(tableDict['GeologicLines'], 'GeologicLines_ID', xsN+'GeologicLines_ID')

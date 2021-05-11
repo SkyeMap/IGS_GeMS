@@ -69,7 +69,7 @@ class GDB_tool(object):
         direction="Input",
         multiValue = True)
         param3.filter.type = "ValueList"
-        param3.filter.list = ['CartographicLines','CorrelationOfMapUnits',
+        param3.filter.list = ['CartographicPoints','CartographicLines','CorrelationOfMapUnits',
                               'DataSourcePolys','FossilPoints','GenericPoints',
                               'GeochemPoints','GeochronPoints','GeologicPoints',
                               'GeologicLines','IsoValueLines','MapUnitLines',
