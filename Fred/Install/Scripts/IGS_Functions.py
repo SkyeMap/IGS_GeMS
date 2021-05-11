@@ -350,6 +350,18 @@ def gdbTool(outputDir,thisDB,coordSystem,OptionalElements,
                     createFeatureClass(thisDB, xsName, xsN+'OrientationPoints', 'POINT', opDefs)
  
                 # TODO: Add cartolines, cartopoints, geolines, geopoints 
+                
+                if 'CartographicLines' in OptionalElements:
+                    opDefs = rename_field(tableDict['CartographicLines'], 'CartographicLines_ID', xsN+'CartographicLines_ID')
+                    createFeatureClass(thisDB, xsName, xsN+'CartographicLines', 'POLYLINE', opDefs)
+                    
+                if 'GeologicLines' in OptionalElements:
+                    opDefs = rename_field(tableDict['GeologicLines'], 'GeologicLines_ID', xsN+'GeologicLines_ID')
+                    createFeatureClass(thisDB, xsName, xsN+'GeologicLines', 'POLYLINE', opDefs)
+                    
+                if 'GeologicPoints' in OptionalElements:
+                    opDefs = rename_field(tableDict['GeologicPoints'], 'GeologicPoints_ID', xsN+'GeologicPoints_ID')
+                    createFeatureClass(thisDB, xsName, xsN+'GeologicPoints', 'POINT', opDefs)
         
         # create tables
         tables = ['DescriptionOfMapUnits','DataSources','Glossary']
