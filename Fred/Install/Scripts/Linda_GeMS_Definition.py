@@ -317,7 +317,19 @@ startDict = {
                              ['MapUnit','String','NoNulls',mapUnitLength],
                              ['LocationSourceID','String','NoNulls',IDLength],
                              ['DataSourceID','String','NoNulls',IDLength],
+                             ['Notes','String','Optional',defaultLength]],
+                             
+'CartographicPoints':        [['Type','String','NoNulls',defaultLength],
+                             ['Symbol','String','NullsOK',defaultLength],
+                             ['Label','String','NullsOK',IDLength],
+                             ['LocationConfidenceMeters','Single','NoNulls'],
+                             ['PlotAtScale','Single','NoNulls'],
+                             ['StationID','String','NullsOK',IDLength],
+                             ['MapUnit','String','NoNulls',mapUnitLength],
+                             ['LocationSourceID','String','NoNulls',IDLength],
+                             ['DataSourceID','String','NoNulls',IDLength],
                              ['Notes','String','Optional',defaultLength]]
+                             
 
 }
 
