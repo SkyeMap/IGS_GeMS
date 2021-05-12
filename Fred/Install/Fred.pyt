@@ -94,7 +94,7 @@ class GDB_tool(object):
         datatype="GPBoolean",
         parameterType="Optional",
         direction="Input")
-        param5.value = True
+        param5.value = False
         
         param6 = arcpy.Parameter(
         displayName="Add fields for cartographic representations",
@@ -110,15 +110,15 @@ class GDB_tool(object):
         datatype="GPBoolean",
         parameterType="Optional",
         direction="Input")
-        param7.value = True
+        param7.value = False
         
         param8 = arcpy.Parameter(
         displayName="Add standard confidence values",
         name="addConfs",
         datatype="GPBoolean",
-        parameterType="Required",
+        parameterType="Optional",
         direction="Input")
-        param8.value = True
+        param8.value = False
         
         params = [param0, param1, param2, param3, param4,
                   param5, param6, param7, param8]
